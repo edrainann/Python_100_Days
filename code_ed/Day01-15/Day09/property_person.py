@@ -18,14 +18,17 @@ class Person(object):
         self._name = name
         self._age = age
 
+    # 访问器 - getter方法
     @property
     def name(self):
         return self._name
 
+    # 访问器 - getter方法
     @property
     def age(self):
         return self._age
 
+    # 修改器 - setter方法
     @age.setter
     def age(self, age):
         self._age = age
@@ -42,6 +45,7 @@ def main():
     person.play()
     person.age = 8
     person.play()
+    # person.name = "哇哈哈"  # Property 'name' cannot be set,AttributeError: can't set attribute
 
 
 if __name__ == '__main__':
