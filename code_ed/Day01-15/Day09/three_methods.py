@@ -95,6 +95,13 @@ class Province(object):
         # 实例属性
         self.name = name
 
+    def class_fun(self):
+        print("----------实例方法啊---------")
+
+    @staticmethod
+    def static_fun():
+        print('=========静态方法哟==========')
+
 
 # 创建一个实例对象
 obj = Province('重庆市')
@@ -102,6 +109,15 @@ obj = Province('重庆市')
 print(obj.name)
 # 直接访问属性
 print("Province.country", Province.country)
+# print("Province.class_fun", Province.class_fun())  # Parameter 'self' unfilled 类对象无法调用实例方法
+print("实例对象调用 类属性-->", obj.country)  # 实例对象调用 类属性
+# print("实例对象调用 类属性-->",obj.country='wawa')  # Can't assign to function call
+obj.__class__.country = 'waa'
+print("实例对象调用 类属性-->", obj.country)  # 实例对象修改类属性
+
+obj.class_fun()  # 实例对象调用 实例方法
+print(obj.name)  # 实例对象调用 实例属性
+obj.static_fun()  # 实例对象调用 静态方法
 
 
 class Foo(object):
