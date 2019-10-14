@@ -5,6 +5,8 @@
 """
 如果需要直接加载图像到窗口上，可以使用pygame中image模块的函数来加载图像，再通过之前获得的窗口对象的blit方法渲染图像
 """
+import os
+
 import pygame
 
 
@@ -18,7 +20,9 @@ def main():
     # 设置窗口的背景色(颜色是由红绿蓝三原色构成的元组)
     screen.fill((255, 255, 255))
     # 通过指定的文件名加载图像
-    ball_image = pygame.image.load('./res/ball.png')
+    path = os.path.abspath(os.path.join(os.getcwd(), '../../res/ball.png'))
+    ball_image = pygame.image.load(path)
+
     # 在窗口上渲染图像
     screen.blit(ball_image, (50, 50))
     # 刷新当前窗口(渲染窗口将绘制的图像呈现出来)
@@ -33,4 +37,7 @@ def main():
 
 
 if __name__ == '__main__':
+    print("---获取当前目录-----")
+    print(os.getcwd())
+    print(os.path.abspath(os.path.dirname(__file__)))
     main()
