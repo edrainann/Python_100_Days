@@ -43,3 +43,4 @@ print(os.path.abspath(__file__))
 print(os.path.abspath(os.path.dirname(__file__)))
 print(os.path.dirname(os.path.abspath(__file__)))
 print('--获取当前目录--', os.path.abspath("."))  # 获取当前目录
+print(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
