@@ -10,3 +10,7 @@ g1(3, 2)  # False
 
 g2 = lambda x: x + 1
 g2(2)  # 3
+
+list1 = ['physics', 'chemistry', 1997, 2000]
+print('list1:', list1)
+print('list1[:]:', list1[:])
