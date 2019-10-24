@@ -26,6 +26,7 @@ for member in t:
 # 变量t重新引用了新的元组原来的元组将被垃圾回收
 t = ("嗷嗷嗷", 18, True, "月球")
 print(t)
+t.index()
 
 # 将元组转换成列表
 person = list(t)
