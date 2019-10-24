@@ -24,3 +24,9 @@ print("list4:", list4)
 list1.sort()
 # list1.sort(reverse=True)
 print(list1)
+
+name_list = ['allen', 'ann', 'ed', 'ann']
+print('-======', name_list.index('ann'))
+list_len = len(name_list)
+print(list_len)
+name_list.sort(reverse=True)  # 降序排列

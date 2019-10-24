@@ -44,3 +44,7 @@ for index, elem in enumerate(list1):
 
 for num in range(5):
     print("num:", list1[num])
+
+import keyword
+
+print('这是关键字：', keyword.kwlist)
