@@ -9,10 +9,27 @@ a = 1
 
 
 def change():
-    global a
-    a += 1
+    # global a
+    # a += 1
+    a = 2
     print("函数内部的a的值：", a)  # 2
 
 
+def change02():
+    print("使用全局变量 a的值：", a)  # 2
+
+
 change()
-print("调用change函数后， 函数外部的a的值：", a)  # 2
+print("调用change函数后， 函数外部的a的值：", a)
+change02()
+
+num = 10
+print('---', id(num))
+
+
+def demo01():
+    num = 1
+    print('demo01 --》', num, id(num))
+
+
+demo01()
