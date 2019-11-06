@@ -11,6 +11,7 @@ from time import time
 class Timer:
     def __init__(self, func):
         self._func = func
+
     def __call__(self, *args, **kwargs):
         before = time()
         result = self._func(*args, **kwargs)
@@ -18,8 +19,11 @@ class Timer:
         print("elapsed: ", after - before)
         return result
 
+
 @Timer
 def add(x, y=10):
     return x + y
 
-print(add(4009988))
+
+a = add(4893849394)
+print(a, "_abv")
