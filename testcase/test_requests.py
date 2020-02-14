@@ -21,7 +21,10 @@ class TestRequests(object):
 
     def test_post(self):
         r = requests.post(self.url,
-                          params={"a": 1, "b": "string content"},
+                          # params={"a": 1, "b": "string content"},  # 错误的发送post请求
+                          # data={"a": 1, "b": "string content"},
+                          json={"a": 1, "b": "string content"},
+                          headers={"a": "11", "b": "22"},
                           proxies={"https": "127.0.0.1:8889",
                                    "http": "127.0.0.1:8889"},  # 启动charles走代理
                           verify=False  # 关闭认证TLS证书
@@ -29,3 +32,8 @@ class TestRequests(object):
         logging.info(r.url)
         logging.info(r.text)
         logging.info(json.dumps(r.json(), indent=2))
+
+    def test_cookie(self):
+        r = requests.get("http://www.httpbin.org/cookies",
+                         cookies={"a": "111", "b": "222"})
+        logging.info(r.text)
