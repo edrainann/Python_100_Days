@@ -37,3 +37,17 @@ class TestRequests(object):
         r = requests.get("http://www.httpbin.org/cookies",
                          cookies={"a": "111", "b": "222"})
         logging.info(r.text)
+
+    def test_quote(self):
+        url = "https://stock.xueqiu.com/v5/stock/portfolio/stock/list.json?"
+        r = requests.post(url,
+                          params={"category": "1"},
+                          headers={"User-Agent": "Xueqiu Android 11.19"},
+                          cookies={"xq_a_token": "5806a70c6bc5d5fb2b00978aeb1895532fffe502", "u": "3446260779"}
+                          )
+        # logging.info(r.text)
+        logging.info(json.dumps(r.json(), indent=2))
+        # assert r.json()["error_code"] == "1"
+        assert r.json()["error_code"] == "400016"
+        assert r.json()["error_code"] == "1"
+
