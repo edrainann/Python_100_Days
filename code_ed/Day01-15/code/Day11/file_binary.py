@@ -7,7 +7,7 @@
 """
 def main():
     try:
-        with open('test.jpg', 'rb') as fs1:
+        with open('demo_test.jpg', 'rb') as fs1:
             data = fs1.read()
             print(type(data))  # <class 'bytes'>
         with open('test_ao.jpg', 'wb') as fs2:  # 将test.jpg 复制给 test_ao.jpg，若没有test_ao也会创建
