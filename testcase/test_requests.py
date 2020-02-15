@@ -73,3 +73,29 @@ class TestRequests(object):
         # assert jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0] == "哇哈哈"
         assert_that(jsonpath.jsonpath(r.json(),
                                       "$.topics[?(@.id==22234)].user.name")[0], equal_to("一只咸鱼哎呀呀"), "hamcrest比较断言失败啦")
+
+    def test_hamcrest(self):
+        """hamcrest断言"""
+        # assert_that(0.1 * 0.1, close_to(0.01, 0.000000000000000000001))
+        li = ["a", "b", "c"]
+        # assert_that(li, equal_to(["a", "b", "c"]))
+        # assert_that(li, has_item("a"))  # 序列中匹配某个值
+        assert_that(
+            ["a", "b", "c"],
+            any_of(  # 某个条件需要匹配
+                has_items("a", "d"),
+                has_items("a", "c")
+            )
+        )
+        # 所有条件都要匹配
+        assert_that(["a", "b", "c"], all_of(has_items("a", "d"), has_items("a", "c")))
+
+    def test_demo01(self):
+        """通过JsonPath+hamcrest进行断言"""
+        r = requests.get(self.url)
+        results = r.json()
+        assert_that(jsonpath.jsonpath(results, "$.topics[*].user.login"),
+                    any_of(
+                        has_item("jshguoxin"),
+                        has_item("2222")
+                    ))
