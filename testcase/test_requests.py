@@ -96,6 +96,6 @@ class TestRequests(object):
         results = r.json()
         assert_that(jsonpath.jsonpath(results, "$.topics[*].user.login"),
                     any_of(
-                        has_item("jshguoxin"),
+                        has_item("jshguoxin1"),
                         has_item("2222")
-                    ))
+                    ), "肿么回事断言里面都木有")
