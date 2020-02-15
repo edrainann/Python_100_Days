@@ -5,6 +5,7 @@ import json
 import requests
 import logging
 import jsonpath
+from hamcrest import *
 
 
 class TestRequests(object):
@@ -52,6 +53,7 @@ class TestRequests(object):
         assert r.json()["error_code"] == "1"
 
     def test_get_json_path(self):
+        """JsonPath相等表达式"""
         r = requests.get(self.url)
         logging.info(json.dumps(r.json(), indent=2))
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[0].user.login"))
@@ -59,3 +61,15 @@ class TestRequests(object):
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name"))  # ['一只咸鱼']
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0])  # 一只咸鱼
         assert jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0] == "哇哈哈"
+
+    def test_get_assert_hamcrest(self):
+        """hamcrest断言"""
+        r = requests.get(self.url)
+        logging.info(json.dumps(r.json(), indent=2))
+        logging.info(jsonpath.jsonpath(r.json(), "$.topics[0].user.login"))
+        logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user"))  # 只取出来其中某一个，相等的值，做匹配
+        logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name"))  # ['一只咸鱼']
+        logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0])  # 一只咸鱼
+        # assert jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0] == "哇哈哈"
+        assert_that(jsonpath.jsonpath(r.json(),
+                                      "$.topics[?(@.id==22234)].user.name")[0], equal_to("一只咸鱼哎呀呀"), "hamcrest比较断言失败啦")
