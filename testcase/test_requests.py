@@ -58,3 +58,4 @@ class TestRequests(object):
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user"))  # 只取出来其中某一个，相等的值，做匹配
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name"))  # ['一只咸鱼']
         logging.info(jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0])  # 一只咸鱼
+        assert jsonpath.jsonpath(r.json(), "$.topics[?(@.id==22234)].user.name")[0] == "哇哈哈"
