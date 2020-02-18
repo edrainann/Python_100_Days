@@ -6,6 +6,7 @@ import requests
 import logging
 import jsonpath
 from hamcrest import *
+from jsonschema import validate
 
 
 class TestRequests(object):
@@ -99,3 +100,14 @@ class TestRequests(object):
                         has_item("jshguoxin1"),
                         has_item("2222")
                     ), "肿么回事断言里面都木有")
+
+    def test_json_schema(self):
+        """通过JsonSchema进行断言"""
+        schema_validate = {
+            "type": "object",
+            "properties": {
+                "price": {"type": "number"},
+                "name": {"type": "string"},
+            },
+        }
+        validate(instance={"name": "Eggs", "price": "34.99"}, schema=schema_validate)
