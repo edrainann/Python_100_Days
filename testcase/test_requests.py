@@ -102,7 +102,7 @@ class TestRequests(object):
                     ), "肿么回事断言里面都木有")
 
     def test_json_schema(self):
-        """通过JsonSchema进行断言"""
+        """通过JsonSchema进行断言简单例子"""
         schema_validate = {
             "type": "object",
             "properties": {
@@ -111,3 +111,10 @@ class TestRequests(object):
             },
         }
         validate(instance={"name": "Eggs", "price": "34.99"}, schema=schema_validate)
+
+    def test_json_schema_demo01(self):
+        """通过JsonSchema进行断言demo01"""
+        r = requests.get(self.url)
+        logging.info(json.dumps(r.json(), indent=2))
+        schema_validate = json.load(open("list_schema.json", 'rb'))
+        validate(instance=r.json(), schema=schema_validate)
