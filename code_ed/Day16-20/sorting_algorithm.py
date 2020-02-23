@@ -55,6 +55,27 @@ def bubble_sort(origin_items, comp=lambda x, y: x > y):
     return items
 
 
+def bubble_sort_01(origin_items):
+    """简单的冒泡排序-正序"""
+    for i in range(1, len(origin_items)):
+        print("this is i:", i)
+        for j in range(0, len(origin_items) - i):
+            print("j:", j)
+            if origin_items[j] > origin_items[j + 1]:
+                origin_items[j], origin_items[j + 1] = origin_items[j + 1], origin_items[j]
+    return origin_items
+
+
+def bubble_sort_02(origin_items):
+    """简单的冒泡排序-倒序"""
+    for i in range(1, len(origin_items)):
+        for j in range(0, len(origin_items) - i):
+            if origin_items[j] < origin_items[j + 1]:
+                origin_items[j], origin_items[j + 1] = origin_items[j + 1], origin_items[j]
+    return origin_items
+
+
 if __name__ == '__main__':
-    ss = select_sort([11, 9, 2, 4])
+    items = [11, 9, 2, 4]
+    ss = bubble_sort_02(items)
     print(ss)
