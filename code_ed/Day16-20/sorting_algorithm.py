@@ -56,7 +56,12 @@ def bubble_sort(origin_items, comp=lambda x, y: x > y):
 
 
 def bubble_sort_01(origin_items):
-    """简单的冒泡排序-正序"""
+    """
+    简单的冒泡排序-正序
+    https://www.runoob.com/w3cnote/bubble-sort.html
+    比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+    对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。这步做完后，最后的元素会是最大的数。
+    """
     for i in range(1, len(origin_items)):
         print("this is i:", i)
         for j in range(0, len(origin_items) - i):
@@ -75,7 +80,37 @@ def bubble_sort_02(origin_items):
     return origin_items
 
 
+def selection_sort_01(origin_items):
+    """选择排序-正序
+    https://www.runoob.com/w3cnote/selection-sort.html
+    首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置。
+    再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。
+    重复第二步，直到所有元素均排序完毕。
+    """
+    for i in range(len(origin_items) - 1):
+        min_index = i  # 记录最小数的索引
+        for j in range(i + 1, len(origin_items)):
+            if origin_items[j] < origin_items[min_index]:
+                min_index = j
+        if i != min_index:  # i 不是最小数时，将 i 和最小数进行交换
+            origin_items[i], origin_items[min_index] = origin_items[min_index], origin_items[i]
+            print(f'第{i + 1}趟，值为{origin_items}')
+    return origin_items
+
+
+def selection_sort_02(origin_items):
+    """选择排序-倒序"""
+    for i in range(len(origin_items) - 1):
+        max_index = i
+        for j in range(i + 1, len(origin_items)):
+            if origin_items[j] > origin_items[max_index]:
+                max_index = j
+        if i != max_index:
+            origin_items[i], origin_items[max_index] = origin_items[max_index], origin_items[i]
+    return origin_items
+
+
 if __name__ == '__main__':
     items = [11, 9, 2, 4]
-    ss = bubble_sort_02(items)
+    ss = selection_sort_02(items)
     print(ss)
