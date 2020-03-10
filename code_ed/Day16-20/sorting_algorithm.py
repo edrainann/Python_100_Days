@@ -89,9 +89,11 @@ def selection_sort_01(origin_items):
     """
     for i in range(len(origin_items) - 1):
         min_index = i  # 记录最小数的索引
+        print(f'min01:{min_index}')
         for j in range(i + 1, len(origin_items)):
             if origin_items[j] < origin_items[min_index]:
                 min_index = j
+                print(f'min02:{min_index}')
         if i != min_index:  # i 不是最小数时，将 i 和最小数进行交换
             origin_items[i], origin_items[min_index] = origin_items[min_index], origin_items[i]
             print(f'第{i + 1}趟，值为{origin_items}')
@@ -112,5 +114,5 @@ def selection_sort_02(origin_items):
 
 if __name__ == '__main__':
     items = [11, 9, 2, 4]
-    ss = selection_sort_02(items)
+    ss = bubble_sort(items)
     print(ss)
