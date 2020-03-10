@@ -21,6 +21,20 @@ def reverse_force(x: int) -> int:
     return x if -2147483648 < x < 2147483647 else 0
 
 
+def reverse_01(x):
+    """通过list.reverse进行list的反转"""
+    print(x)
+    x.reverse()
+    return x
+
+
 if __name__ == '__main__':
-    ab = 1233222
-    print(reverse_force(ab))
+    a = 1233222
+    b = [1, 2, 3]
+    c = "123456"
+    print(reverse_force(a))
+    print(reverse_01(b))
+    list_01 = [1, 2, 3, 4]
+    list_01.reverse()
+    print(list_01)
+    print(c[::-1])  # 切片
