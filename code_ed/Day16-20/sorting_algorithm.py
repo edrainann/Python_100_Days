@@ -112,7 +112,36 @@ def selection_sort_02(origin_items):
     return origin_items
 
 
+def insertion_sort_01(origin_items):
+    """插入排序
+    插入排序和冒泡排序一样，也有一种优化算法，叫做拆半插入。
+    将第一待排序序列第一个元素看做一个有序序列，把第二个元素到最后一个元素当成是未排序序列。
+    从头到尾依次扫描未排序序列，将扫描到的每个元素插入有序序列的适当位置。
+    （如果待插入的元素与有序序列中的某个元素相等，则将待插入元素插入到相等元素的后面。）
+    """
+    for i in range(len(origin_items)):
+        pre_index = i - 1
+        current = origin_items[i]
+        while pre_index >= 0 and origin_items[pre_index] > current:
+            origin_items[pre_index + 1] = origin_items[pre_index]
+            pre_index -= 1
+        origin_items[pre_index + 1] = current
+    return origin_items
+
+
+def insertion_sort(origin_items):
+    """插入排序，倒序"""
+    for i in range(len(origin_items)):
+        pre_index = i - 1
+        current = origin_items[i]
+        while pre_index >= 0 and origin_items[pre_index] < current:
+            origin_items[pre_index + 1] = origin_items[pre_index]
+            pre_index = pre_index - 1
+        origin_items[pre_index + 1] = current
+    return origin_items
+
+
 if __name__ == '__main__':
     items = [11, 9, 2, 4]
-    ss = bubble_sort(items)
+    ss = insertion_sort(items)
     print(ss)
