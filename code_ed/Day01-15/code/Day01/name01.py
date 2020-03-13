@@ -13,7 +13,7 @@ class Person(object):
         return 'name=%s, age=%s' % (self.name, self.age)
 
 
-xmr = Person('lisi', 12)
+xmr = Person('ed', 12)
 print(xmr.name)
 print(xmr.__dict__['name'])  # 通过属性字典__dict__
 print(getattr(xmr, 'name'))  # 通过getattr函数
