@@ -42,9 +42,24 @@ class Solution:
                 # print(strs)
             return same
 
+    def longestCommonPrefix02(self, strs) -> str:
+        """zip 打包成元素列表，同时利用set()函数的不重复性，大于1就结束"""
+        same0 = ""
+        for i in zip(*strs):
+            if len(set(i)) == 1:
+                same0 += i[0]
+            else:
+                break
+        return same0
+
+
+
+
+
 
 if __name__ == '__main__':
     s = Solution()
-    # a = ["flower", "flow", "flight"]
-    a = ["f"]
-    print(s.longestCommonPrefix(a))
+    a = ["flower", "flow", "flight"]
+    # a = ["f"]
+    # print(s.longestCommonPrefix(a))
+    print(s.longestCommonPrefix02(a))
