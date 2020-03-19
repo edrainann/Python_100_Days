@@ -44,3 +44,6 @@ if __name__ == '__main__':
     print(s.reverse(a))
     print(-(1 << 31))
     print((1 << 31) - 1)
+    print(len('123'))
+    list = [1,2,3]
+    print(list.pop(-2))
