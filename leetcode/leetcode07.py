@@ -58,3 +58,4 @@ if __name__ == '__main__':
     print(list_01)
     print(c[::-1])  # 切片
     print(reverse(a))
+    print( -(1<<31) )
