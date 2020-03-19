@@ -44,6 +44,8 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 输出: 1994
 解释: M = 1000, CM = 900, XC = 90, IV = 4.
 """
+import re
+
 list_s = ["I", "I", "I"]
 rm_dict = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 print(rm_dict["I"])
@@ -68,7 +70,7 @@ class Solution:
         for i in range(len(s)):
             num = rm_dict.get(list_s[i])
             # if (list_s[i] == "I") and (list_s[i - 1] == "V" or list_s[i - 1] == "X"):
-            if i < len(s)-1:
+            if i < len(s) - 1:
                 if list_s[i] == "I" and list_s[i + 1] in ["V", "X"]:
                     sum_s = sum_s + num - 2
                 elif list_s[i] == "X" and list_s[i + 1] in ["L", "C"]:
@@ -81,8 +83,31 @@ class Solution:
                 sum_s = sum_s + num
         return sum_s
 
+    def romanToInt02(self, s: str) -> int:
+        roman_dict = {
+            'I': 1,
+            'IV': 4,
+            'V': 5,
+            'IX': 9,
+            'X': 10,
+            'XL': 40,
+            'L': 50,
+            'XC': 90,
+            'C': 100,
+            'CD': 400,
+            'D': 500,
+            'CM': 900,
+            'M': 1000
+        }
+        sum_s = 0
+        list_s = re.findall('CM|CD|XC|XL|IX|IV|I|V|X|L|C|D|M', s)
+        for item in list_s:
+            sum_s = sum_s + roman_dict[item]
+        return sum_s
+
 
 if __name__ == '__main__':
     s = Solution()
     a = "LVIII"
     print(s.romanToInt01(a))
+    print(s.romanToInt02(a))
