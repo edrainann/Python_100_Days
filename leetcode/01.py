@@ -14,6 +14,7 @@
 所以返回 [0, 1]
 """
 
+
 class Solution:
     def twoSum(self, nums, target):
         for i in range(len(nums)):
