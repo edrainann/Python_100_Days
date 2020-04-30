@@ -2,7 +2,7 @@
 # @Time    : 2020/4/29
 # @Author  : Edrain
 """
-
+20. 有效的括号
 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
 
 有效字符串需满足：
@@ -47,6 +47,7 @@ class Solution:
                 stack.append(c)
                 print("---", stack)
             # 字典通过key找value，dict['key']
+            # 最后一项被删除的值 stack.pop()
             elif dic[stack.pop()] != c:
                 print(stack)
                 return False
