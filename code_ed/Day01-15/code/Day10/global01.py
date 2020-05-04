@@ -33,3 +33,19 @@ def demo01():
 
 
 demo01()
+
+a = 3
+
+
+def demo02():
+    global a  # 调用全局变量a
+    print("demo02--", a)  # 1 ，demo02方法里之后再调用a时，都是全局的a
+    a = a + 20
+
+
+if __name__ == "__main__":
+    """执行顺序2、1、3"""
+    print(a)  # 2
+    a = a + 10
+    demo02()
+    print("end--", a)  # 3 ,demo02 改变了最后a的输出值
