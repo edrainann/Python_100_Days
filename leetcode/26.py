@@ -87,7 +87,7 @@ class Solution:
                 i += 1
         return len(nums)
 
-    def remove_duplicates_04(self, nums: List[int]) -> int:
+    def rd04(self, nums: List[int]) -> int:
         """通过for删除重复元素"""
         length = len(nums)
         i = 1
@@ -99,10 +99,23 @@ class Solution:
                 length = length - 1
         return len(nums)
 
+    def rd05(self, nums: List[int]) -> int:
+        """指针法
+        构造指针保留最后一个不重复的元素，遍历过程对比元素，如果不同，则覆写
+        """
+        flag = 0
+        if len(nums) == 0:
+            return flag
+        for i in range(1, len(nums)):
+            if nums[i] != nums[flag]:
+                flag += 1
+                nums[flag] = nums[i]
+        return flag+1
+
 
 if __name__ == '__main__':
     s = Solution()
-    params = [1, 1, 1]
-    # params = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+    # params = [1, 1, 1]
+    params = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     # print(s.removeDuplicates(params))
-    print(s.remove_duplicates_04(params))
+    print(s.rd05(params))
