@@ -52,7 +52,7 @@ class Solution:
         """通过for删除重复元素"""
         length = len(nums)
         i = 0
-        for j in range(1, length):
+        for j in range(1, len(nums)):
             if i == length:
                 return len(nums)
             elif nums[i] != nums[i + 1]:
@@ -115,7 +115,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    # params = [1, 1, 1]
-    params = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
-    # print(s.removeDuplicates(params))
-    print(s.rd05(params))
+    params = [1, 1, 1]
+    # params = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+    print(s.removeDuplicates(params))
+    # print(s.rd05(params))
