@@ -12,3 +12,6 @@ del list1[3]
 
 a = ""
 print(len(a))
+
+b = "1234"
+print(b[1])
