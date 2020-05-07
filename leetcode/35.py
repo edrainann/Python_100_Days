@@ -57,9 +57,40 @@ class Solution:
                 elif nums[l_nums - 1] < target:
                     return l_nums
 
+    def ss01(self, nums: List[int], target: int) -> int:
+        """遍历"""
+        i = 0
+        while i < len(nums):
+            if nums[i] < target:
+                i += 1
+            else:
+                break
+        return i
+
+    def ss02(self, nums: List[int], target: int) -> int:
+        """二分法"""
+        size = len(nums)
+        if size == 0:
+            return 0
+        # 特判
+        if nums[size - 1] < target:
+            return size
+        left = 0
+        right = size - 1
+        while left < right:
+            mid = left + (right - left) // 2
+            # 严格小于 target 的元素一定不是解
+            if nums[mid] < target:
+                # 下一轮搜索区间是 [mid + 1, right]
+                left = mid + 1
+            else:
+                right = mid
+        return left
+
 
 if __name__ == '__main__':
     s = Solution()
-    param1 = [1, 3]
+    param1 = [1, 3, 5, 6]
     param2 = 2
-    print(s.searchInsert(param1, param2))
+    # print(s.searchInsert(param1, param2))
+    print(s.ss02(param1, param2))
